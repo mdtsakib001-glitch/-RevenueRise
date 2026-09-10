@@ -1,0 +1,135 @@
+/* =====================================================
+   PathSoft — Additional CSS (paste into WP Customizer)
+   This file only contains things Tailwind utilities can't
+   express natively in Elementor: wave shapes, pill buttons,
+   the icon-circle motif, and a couple of keyframes.
+   ===================================================== */
+
+:root{
+  --ps-primary:#1857C4;
+  --ps-primary-dark:#123f8f;
+  --ps-navy:#0B1B3B;
+  --ps-gray:#6B7280;
+  --ps-light:#F5F8FC;
+  --ps-wave:#DCE9FB;
+}
+
+body{
+  font-family:'Inter',sans-serif;
+  color:var(--ps-gray);
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4,h5,.font-heading{
+  font-family:'Poppins',sans-serif;
+  color:var(--ps-navy);
+}
+
+/* ---------- Buttons (Elementor: Button widget > Style) ---------- */
+.btn-primary{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--ps-primary);color:#fff;
+  padding:.85rem 1.75rem;border-radius:999px;
+  font-size:.875rem;font-weight:600;
+  transition:background .2s ease, transform .2s ease;
+  white-space:nowrap;
+}
+.btn-primary:hover{background:var(--ps-primary-dark);transform:translateY(-1px);}
+
+.btn-outline{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:#fff;color:var(--ps-navy);
+  border:1.5px solid #E2E8F0;
+  padding:.85rem 1.75rem;border-radius:999px;
+  font-size:.875rem;font-weight:600;
+  transition:border-color .2s ease, color .2s ease;
+}
+.btn-outline:hover{border-color:var(--ps-primary);color:var(--ps-primary);}
+
+.btn-primary-inverse{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:#fff;color:var(--ps-primary);
+  padding:.85rem 1.75rem;border-radius:999px;
+  font-size:.875rem;font-weight:600;
+  transition:transform .2s ease;
+}
+.btn-primary-inverse:hover{transform:translateY(-1px);}
+
+/* ---------- Icon circle (Elementor: Icon Box widget) ---------- */
+.icon-circle{
+  width:64px;height:64px;border-radius:50%;
+  background:var(--ps-primary);
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;flex-shrink:0;
+}
+.icon-circle svg{width:26px;height:26px;stroke:#fff;fill:none;}
+
+/* ---------- Section eyebrow dash (Elementor: Divider/Heading) ---------- */
+.eyebrow-dash{
+  width:46px;height:3px;background:var(--ps-primary);
+  border-radius:3px;margin:0 auto 14px;
+}
+
+/* ---------- Cards (Elementor: Icon Box / Container) ---------- */
+.ps-card{
+  background:#fff;border-radius:20px;
+  box-shadow:0 10px 30px rgba(11,27,59,.06);
+  padding:2.25rem 2rem;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.ps-card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(11,27,59,.1);}
+
+/* ---------- Wave / blob decorations (Elementor: Shape Divider or Background SVG) ---------- */
+.wave-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;}
+.wave-bg svg{position:absolute;fill:var(--ps-wave);opacity:.55;}
+
+/* ---------- Breadcrumb banner ---------- */
+.page-banner{
+  background:var(--ps-light);
+  position:relative;overflow:hidden;
+}
+
+/* ---------- Numbered feature (Why Choose Us) ---------- */
+.num-feature .num{
+  font-family:'Poppins',sans-serif;
+  font-weight:700;font-size:1.75rem;color:var(--ps-primary);
+}
+
+/* ---------- Experience badge ---------- */
+.exp-badge{
+  width:230px;height:230px;border-radius:50%;
+  background:#fff;box-shadow:0 20px 50px rgba(11,27,59,.12);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  position:relative;z-index:1;
+}
+.exp-badge::before{
+  content:"";position:absolute;inset:-14px -14px auto auto;
+  width:150px;height:150px;border-radius:50%;
+  background:var(--ps-primary);z-index:-1;
+  left:-24px;top:24px;
+}
+
+/* ---------- Nav dropdown (Elementor: Nav Menu widget, native dropdown) ---------- */
+.nav-dropdown{display:none;}
+.nav-item:hover .nav-dropdown{display:block;}
+
+/* ---------- Accordion (Elementor: Accordion widget) ---------- */
+.faq-item[open] summary .chevron{transform:rotate(45deg);}
+summary::-webkit-details-marker{display:none;}
+
+/* ---------- Gallery filter (Elementor: Gallery widget w/ filter) ---------- */
+.filter-pill.is-active{background:var(--ps-primary);color:#fff;}
+
+/* ---------- Motion (single deliberate entrance only) ---------- */
+@keyframes ps-fade-up{
+  from{opacity:0;transform:translateY(16px);}
+  to{opacity:1;transform:translateY(0);}
+}
+.hero-animate{animation:ps-fade-up .7s ease both;}
+@media (prefers-reduced-motion: reduce){
+  .hero-animate{animation:none;}
+}
+
+/* ---------- Focus states (accessibility) ---------- */
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
+  outline:2px solid var(--ps-primary);outline-offset:2px;
+}
